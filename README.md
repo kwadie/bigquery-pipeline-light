@@ -48,7 +48,7 @@ gsutil cp new_data.txt gs://<bucket>/dir/
 
 #### Create BigQuery Scheduled Transfer
 
-Go to [https://pantheon.corp.google.com/bigquery/transfers](https://pantheon.corp.google.com/bigquery/transfers)
+Go to BigQuery >> Transfers >> Create New Transfer
 and set up a GCS transfer to BigQuery 
 
 ![](images/transfer_job_1.png?raw=true)
