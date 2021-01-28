@@ -55,6 +55,13 @@ and set up a GCS transfer to BigQuery
 ![](images/transfer_job_2.png?raw=true)
 ![](images/transfer_job_3.png?raw=true)
 
+Notes:
+* Since we're not recreating the staging table at every load we need to
+truncate the existing table and load new data as-is. This is the "Write Preference=Mirror" config.
+* In this demo we choose to delete the source files after loading to BigQuery for simplicity to avoid 
+  reloading the same data in next runs. [Read more](https://cloud.google.com/bigquery-transfer/docs/gcs-transfer-parameters#loading_a_snapshot_of_all_data_into_an_ingestion-time_partitioned_table) about loading data from time partitioned buckets.
+
+
 
 #### Schedule a MERGE query
 
@@ -76,7 +83,8 @@ Finally, set up the a schedule some time after the GCS transfer job start time
 
 ![](images/scheduled_query_config.png?raw=true)
 
-PS: one will need am estimate on how long the transfer job takes and add a reasonable buffer time
+Notes:
+ * one will need am estimate on how long the transfer job takes and add a reasonable buffer time
 
 ## Further Reading
 * [Loading a snapshot of all data into an ingestion-time partitioned table](https://cloud.google.com/bigquery-transfer/docs/gcs-transfer-parameters#loading_a_snapshot_of_all_data_into_an_ingestion-time_partitioned_table)
