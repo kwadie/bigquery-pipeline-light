@@ -85,7 +85,10 @@ Finally, set up the a schedule some time after the GCS transfer job start time
 
 Notes:
  * one will need am estimate on how long the transfer job takes and add a reasonable buffer time
-
+## Limitations
+* [Cloud Storage Transfer limits](https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#limitations)
+* For this demo, GCS-BigQuery Data Transfer jobs has a [minimum interval limitation](https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#minimum_intervals) which means
+  that the job won't be able to pick up the newly created file on GCS in the first 60 minutes of creating it. One would need to wait 60 minutes after creating the new_data.txt file on GCS before running the pipeline end-to-end.  
 ## Further Reading
 * [Loading a snapshot of all data into an ingestion-time partitioned table](https://cloud.google.com/bigquery-transfer/docs/gcs-transfer-parameters#loading_a_snapshot_of_all_data_into_an_ingestion-time_partitioned_table)
 * [Setting up a cloud storage transfer](https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer?hl=en_US#setting_up_a_cloud_storage_transfer)
